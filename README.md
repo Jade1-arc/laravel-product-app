@@ -1,6 +1,8 @@
 # Laravel 10 Product Management System
 
-A complete Laravel 10 application with product management, user authentication, role-based access control, and API endpoints for mobile applications.
+A complete Laravel 10 application for product management, user authentication, role-based access control, and API endpoints for mobile applications.
+
+---
 
 ## 🚀 Features
 
@@ -28,82 +30,81 @@ A complete Laravel 10 application with product management, user authentication, 
 - **Role-based Middleware**
 - **SQL Injection Prevention**
 
-## 📋 Requirements
+---
 
+## 📋 Requirements
 - PHP >= 8.1
 - Composer
 - MySQL/PostgreSQL/SQLite
 - Node.js & NPM (for asset compilation)
 
+---
+
 ## 🛠️ Installation
 
-### 1. Clone the Repository
-```bash
-git clone <repository-url>
-cd laravel-product-app
-```
+1. **Clone the Repository**
+    ```bash
+    git clone <repository-url>
+    cd laravel-product-app
+    ```
+2. **Install Dependencies**
+    ```bash
+    composer install
+    npm install
+    ```
+3. **Environment Setup**
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+4. **Database Configuration**
+    Edit `.env` file and configure your database:
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=laravel_product_app
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+5. **Run Migrations & Seeders**
+    ```bash
+    php artisan migrate
+    php artisan db:seed
+    ```
+6. **Create Storage Link**
+    ```bash
+    php artisan storage:link
+    ```
+7. **Compile Assets**
+    ```bash
+    npm run dev
+    ```
+8. **Start Development Server**
+    ```bash
+    php artisan serve
+    ```
 
-### 2. Install Dependencies
-```bash
-composer install
-npm install
-```
-
-### 3. Environment Setup
-```bash
-cp .env.example .env
-php artisan key:generate
-```
-
-### 4. Database Configuration
-Edit `.env` file and configure your database:
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=laravel_product_app
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-### 5. Run Migrations & Seeders
-```bash
-php artisan migrate
-php artisan db:seed
-```
-
-### 6. Create Storage Link
-```bash
-php artisan storage:link
-```
-
-### 7. Compile Assets
-```bash
-npm run dev
-```
-
-### 8. Start Development Server
-```bash
-php artisan serve
-```
+---
 
 ## 👥 Default Users
 
 After running the seeder, you'll have these default users:
 
-### Admin User
-- **Email:** admin@example.com
-- **Password:** password
-- **Role:** admin
+- **Admin User**
+  - Email: `admin@example.com`
+  - Password: `password`
+  - Role: `admin`
+- **Regular User**
+  - Email: `user@example.com`
+  - Password: `password`
+  - Role: `user`
 
-### Regular User
-- **Email:** user@example.com
-- **Password:** password
-- **Role:** user
+---
 
 ## 📁 Project Structure
 
-```
+```text
 laravel-product-app/
 ├── app/
 │   ├── Http/
@@ -135,6 +136,8 @@ laravel-product-app/
     └── api.php
 ```
 
+---
+
 ## 🔐 Authentication & Authorization
 
 ### User Roles
@@ -146,9 +149,10 @@ laravel-product-app/
 - `admin` - Requires admin role
 - `user` - Requires any authenticated user
 
+---
+
 ## 🛍️ Product Management
 
-### Features
 - Create, Read, Update, Delete products
 - Image upload with automatic resizing
 - Category assignment
@@ -162,21 +166,23 @@ laravel-product-app/
 - Automatic resizing to 800x600px
 - Stored in `storage/app/public/products/`
 
+---
+
 ## 📱 API Endpoints
 
 ### Public Endpoints
-```
-GET /api/products - List all products
-GET /api/products/{id} - Get specific product
-GET /api/categories - List all categories
-GET /api/categories/{id} - Get specific category with products
+```http
+GET /api/products           # List all products
+GET /api/products/{id}      # Get specific product
+GET /api/categories         # List all categories
+GET /api/categories/{id}    # Get specific category with products
 ```
 
 ### Protected Endpoints (Admin Only)
-```
-POST /api/products - Create new product
-PUT /api/products/{id} - Update product
-DELETE /api/products/{id} - Delete product
+```http
+POST /api/products          # Create new product
+PUT /api/products/{id}      # Update product
+DELETE /api/products/{id}   # Delete product
 ```
 
 ### API Authentication
@@ -193,109 +199,89 @@ POST /api/login
 Authorization: Bearer {token}
 ```
 
+---
+
 ## 🎨 Frontend Features
 
-### Bootstrap 5 Integration
-- Responsive design
-- Modern UI components
-- Mobile-friendly interface
+- **Bootstrap 5 Integration**: Responsive design, modern UI components, mobile-friendly interface
+- **SweetAlert2 Integration**: Beautiful confirmation dialogs, delete confirmations, success/error notifications
+- **Font Awesome Icons**: Consistent iconography, professional appearance
 
-### SweetAlert2 Integration
-- Beautiful confirmation dialogs
-- Delete confirmations
-- Success/error notifications
-
-### Font Awesome Icons
-- Consistent iconography
-- Professional appearance
+---
 
 ## 🚀 Deployment
 
 ### Shared Hosting (cPanel)
-
 1. **Upload Files**
    - Upload all project files to `public_html/`
    - Move contents of `public/` to root directory
-
 2. **Configure Environment**
-   ```env
-   APP_ENV=production
-   APP_DEBUG=false
-   APP_URL=https://yourdomain.com
-   ```
-
+    ```env
+    APP_ENV=production
+    APP_DEBUG=false
+    APP_URL=https://yourdomain.com
+    ```
 3. **Database Setup**
    - Create database in cPanel
    - Update `.env` with database credentials
    - Run migrations: `php artisan migrate --force`
-
 4. **Optimize Application**
-   ```bash
-   php artisan config:cache
-   php artisan route:cache
-   php artisan view:cache
-   php artisan optimize
-   ```
+    ```bash
+    php artisan config:cache
+    php artisan route:cache
+    php artisan view:cache
+    php artisan optimize
+    ```
 
 ### VPS (Ubuntu + Nginx)
-
 1. **Server Setup**
-   ```bash
-   sudo apt update
-   sudo apt install nginx php8.1-fpm php8.1-mysql php8.1-mbstring php8.1-xml php8.1-curl
-   ```
-
+    ```bash
+    sudo apt update
+    sudo apt install nginx php8.1-fpm php8.1-mysql php8.1-mbstring php8.1-xml php8.1-curl
+    ```
 2. **Nginx Configuration**
-   ```nginx
-   server {
-       listen 80;
-       server_name yourdomain.com;
-       root /var/www/laravel-product-app/public;
-       
-       add_header X-Frame-Options "SAMEORIGIN";
-       add_header X-Content-Type-Options "nosniff";
-       
-       index index.php;
-       
-       charset utf-8;
-       
-       location / {
-           try_files $uri $uri/ /index.php?$query_string;
-       }
-       
-       location = /favicon.ico { access_log off; log_not_found off; }
-       location = /robots.txt  { access_log off; log_not_found off; }
-       
-       error_page 404 /index.php;
-       
-       location ~ \.php$ {
-           fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
-           fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-           include fastcgi_params;
-       }
-       
-       location ~ /\.(?!well-known).* {
-           deny all;
-       }
-   }
-   ```
-
+    ```nginx
+    server {
+        listen 80;
+        server_name yourdomain.com;
+        root /var/www/laravel-product-app/public;
+        add_header X-Frame-Options "SAMEORIGIN";
+        add_header X-Content-Type-Options "nosniff";
+        index index.php;
+        charset utf-8;
+        location / {
+            try_files $uri $uri/ /index.php?$query_string;
+        }
+        location = /favicon.ico { access_log off; log_not_found off; }
+        location = /robots.txt  { access_log off; log_not_found off; }
+        error_page 404 /index.php;
+        location ~ \.php$ {
+            fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+            include fastcgi_params;
+        }
+        location ~ /\.(?!well-known).* {
+            deny all;
+        }
+    }
+    ```
 3. **Application Setup**
-   ```bash
-   cd /var/www/laravel-product-app
-   composer install --optimize-autoloader --no-dev
-   php artisan key:generate
-   php artisan migrate --force
-   php artisan storage:link
-   chown -R www-data:www-data storage bootstrap/cache
-   chmod -R 775 storage bootstrap/cache
-   ```
-
+    ```bash
+    cd /var/www/laravel-product-app
+    composer install --optimize-autoloader --no-dev
+    php artisan key:generate
+    php artisan migrate --force
+    php artisan storage:link
+    chown -R www-data:www-data storage bootstrap/cache
+    chmod -R 775 storage bootstrap/cache
+    ```
 4. **SSL Certificate**
-   ```bash
-   sudo apt install certbot python3-certbot-nginx
-   sudo certbot --nginx -d yourdomain.com
-   ```
+    ```bash
+    sudo apt install certbot python3-certbot-nginx
+    sudo certbot --nginx -d yourdomain.com
+    ```
+
+---
 
 ## 🔧 Configuration
 
@@ -323,6 +309,8 @@ REDIS_PORT=6379
 php artisan queue:work
 ```
 
+---
+
 ## 🛡️ Security Best Practices
 
 ### Implemented Security Features
@@ -340,32 +328,31 @@ php artisan queue:work
 - Database backups
 - Monitor error logs
 
+---
+
 ## 🐛 Troubleshooting
 
 ### Common Issues
 
 1. **Storage Link Not Working**
-   ```bash
-   php artisan storage:link
-   # If fails, manually create symlink
-   ln -s storage/app/public public/storage
-   ```
-
+    ```bash
+    php artisan storage:link
+    # If fails, manually create symlink
+    ln -s storage/app/public public/storage
+    ```
 2. **Permission Issues**
-   ```bash
-   chmod -R 775 storage bootstrap/cache
-   chown -R www-data:www-data storage bootstrap/cache
-   ```
-
+    ```bash
+    chmod -R 775 storage bootstrap/cache
+    chown -R www-data:www-data storage bootstrap/cache
+    ```
 3. **Image Upload Fails**
-   - Check file permissions
-   - Verify GD/Imagick extension
-   - Check upload_max_filesize in php.ini
-
+    - Check file permissions
+    - Verify GD/Imagick extension
+    - Check upload_max_filesize in php.ini
 4. **Database Connection Issues**
-   - Verify database credentials
-   - Check database server status
-   - Ensure proper database permissions
+    - Verify database credentials
+    - Check database server status
+    - Ensure proper database permissions
 
 ### Debug Mode
 For development, enable debug mode in `.env`:
@@ -373,20 +360,15 @@ For development, enable debug mode in `.env`:
 APP_DEBUG=true
 ```
 
+---
+
 ## 📊 Performance Optimization
 
 ### Production Optimizations
 ```bash
-# Cache configurations
 php artisan config:cache
-
-# Cache routes
 php artisan route:cache
-
-# Cache views
 php artisan view:cache
-
-# Optimize autoloader
 composer install --optimize-autoloader --no-dev
 ```
 
@@ -400,6 +382,8 @@ composer install --optimize-autoloader --no-dev
 - Consider using WebP format for better compression
 - Implement lazy loading for product images
 
+---
+
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -408,9 +392,13 @@ composer install --optimize-autoloader --no-dev
 4. Add tests if applicable
 5. Submit a pull request
 
+---
+
 ## 📄 License
 
 This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
 
 ## 🆘 Support
 
@@ -422,5 +410,3 @@ For support and questions:
 ---
 
 **Built with ❤️ using Laravel 10**
-#   l a r a v e l - p r o d u c t - a p p  
- 
